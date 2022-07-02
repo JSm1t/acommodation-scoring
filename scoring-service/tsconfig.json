@@ -1,0 +1,32 @@
+{
+  "compileOnSave": true, // Signals to IDE to (re)-compile the saved file
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es2020",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "sourceMap": true,
+    "outDir": "build",
+    "baseUrl": ".",
+    "rootDir": "source",
+    "strictNullChecks": true,
+    "paths": {
+      "*": ["node_modules/*", "source/types/*"],
+      "@shared/*": ["shared/*"]
+    }
+  },
+  "include": ["./source/**/*", "./source/**/*.json", ".d.ts"],
+  "ts-node": {
+    "files": true,
+    "transpileOnly": true,
+    "require": ["tsconfig-paths/register"],
+    "compilerOptions": {
+      "skipLibCheck": true,
+      "esModuleInterop": true
+    }
+  }
+}
