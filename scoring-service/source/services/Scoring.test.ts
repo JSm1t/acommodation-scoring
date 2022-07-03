@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import * as ScoringService from './Scoring';
 
-describe.only('Scoring service', () => {
+describe('Scoring service', () => {
   describe('#calculateWeightedAverage', () => {
     it('should calculate the weighted average for a set of ratings', () => {
       const ratings = [
