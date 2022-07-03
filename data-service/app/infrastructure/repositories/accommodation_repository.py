@@ -24,6 +24,7 @@ def create_accommodation(session: Session, accommodation: schemas.Accommodation)
       contact_url=accommodation.contact_url,
       created_date=accommodation.created_date,
       updated_date=accommodation.updated_date,
+      reviews=[]
     )
 
     session.add(db_accommodation)

@@ -8,9 +8,7 @@ from datetime import datetime
 class Review(BaseModel):
     id: UUID
     accommodation_id: UUID
-    #titles: json
     user_id: str
-    #texts: json
     entry_date: datetime
     travel_date: datetime
     updated_date: datetime
@@ -50,9 +48,7 @@ class Review(BaseModel):
 
 class Accommodation(BaseModel):
     id: UUID | None
-    # names: json
     type: str
-    # geo: json
     address_street: str
     address_zipcode: str
     contact_phone: str | None

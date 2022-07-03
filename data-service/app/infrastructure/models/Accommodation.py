@@ -1,9 +1,11 @@
 from datetime import datetime
 from sqlalchemy import Column, Integer, String, JSON, DateTime
+from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
 
 from ..database import Base
+from . import Review
 
 class Accommodation(Base):
     __tablename__ = "accommodations"
@@ -21,5 +23,4 @@ class Accommodation(Base):
     created_date = Column(DateTime, default=datetime.now())
     updated_date = Column(DateTime, default=datetime.now())
 
-
-  
+    reviews = relationship("Review", cascade="all, delete")

@@ -1,8 +1,8 @@
-"""Create accommodation and review tables
+"""Initial create of accommdations and reviews tables
 
-Revision ID: 90aa5b25893f
+Revision ID: f390c744b6c6
 Revises: 
-Create Date: 2022-07-02 23:31:18.157066
+Create Date: 2022-07-03 21:37:00.486410
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = '90aa5b25893f'
+revision = 'f390c744b6c6'
 down_revision = None
 branch_labels = None
 depends_on = None
