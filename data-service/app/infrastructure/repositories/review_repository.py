@@ -1,36 +1,25 @@
+
 from sqlalchemy.orm import Session
 
-from . import models, schemas
+from .helpers import is_valid_uuid
+from ..models.Accommodation import Accommodation
+from ..models.Review import Review
+from ...models import schemas
 
-def list_accommodations(session: Session, skip: int = 0, limit: int = 100):
-    return session.query(models.Accommodation).offset(skip).limit(limit).all()
+def list_reviews(session: Session, accommodation_id: str, skip: int = 0, limit: int = 100) -> list[schemas.Review]:
+    if not is_valid_uuid(accommodation_id):
+        return []
 
-def get_accommodation(session: Session, accommodation_id: int):
-    return session.query(models.Accommodation).filter(models.Accommodation.id == accommodation_id).first()
+    return session.query(Review).filter(Review.accommodation_id == accommodation_id).offset(skip).limit(limit).all()
 
-def create_accommodation(session: Session, accommodation: schemas.Accommodation):
-    db_accommodation = models.Accommodation(
-      id=accommodation.id,
-      type=accommodation.type,
-      address_street=accommodation.address_street,
-      address_zipcode=accommodation.address_zipcode,
-      contact_phone=accommodation.contact_phone,
-      contact_url=accommodation.contact_url,
-      created_date=accommodation.created_date,
-      updated_date=accommodation.updated_date,
-    )
+def get_review(session: Session, accommodation_id: str, review_id: str) -> schemas.Review | None:
+    if not is_valid_uuid(accommodation_id) or not is_valid_uuid(review_id):
+        return None
 
-    session.add(db_accommodation)
-    session.commit()
+    return session.query(Review).filter(Review.id == review_id).filter(Accommodation.id == accommodation_id).first()
 
-def list_reviews(session: Session, accommodation_id: str, skip: int = 0, limit: int = 100):
-    return session.query(models.Review).filter(models.Review.accommodation_id == accommodation_id).offset(skip).limit(limit).all()
-
-def get_review(session: Session, accommodation_id: str, review_id: str):
-    return session.query(models.Accommodation).filter(models.Review.id == review_id).filter(models.Accommodation.id == accommodation_id).first()
-
-def create_review(session: Session, review: schemas.Review):
-    db_review = models.Review(
+def create_review(session: Session, review: schemas.Review) -> None:
+    db_review = Review(
       id=review.id,
       accommodation_id=review.accommodation_id,
       user_id=review.user_id,

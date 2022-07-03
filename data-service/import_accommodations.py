@@ -1,9 +1,10 @@
 import os
 import json
 from datetime import datetime
-from app.db.database import engine
+from app.infrastructure.database import engine
 from sqlalchemy.orm import Session
-from app.db import schemas, repository
+from app.infrastructure.repositories import accommodation_repository
+from app.models.schemas import Accommodation
 
 directory_location = os.getcwd();
 
@@ -17,7 +18,7 @@ with (
         print("JSON does not contain a list")
 
     for list_item in json_object:
-        accommodation_to_insert = schemas.Accommodation(
+        accommodation_to_insert = Accommodation(
             id=list_item['id'],
             type=list_item['type'],
             address_street=list_item['address']['street'],
@@ -29,4 +30,4 @@ with (
             updated_date=datetime.fromtimestamp(list_item['updatedDate'] / 1000),
         )
 
-        repository.create_accommodation(session=session, accommodation=accommodation_to_insert)
+        accommodation_repository.create_accommodation(session=session, accommodation=accommodation_to_insert)

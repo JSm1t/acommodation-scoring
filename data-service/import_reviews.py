@@ -2,9 +2,10 @@ from cgi import print_exception
 import json
 from sqlalchemy.exc import IntegrityError
 from datetime import datetime
-from app.db.database import engine
+from app.infrastructure.database import engine
 from sqlalchemy.orm import Session
-from app.db import models, repository
+from app.infrastructure.repositories import review_repository
+from app.models.schemas import Review
 from psycopg2.errors import ForeignKeyViolation, UniqueViolation
 
 with (
@@ -17,7 +18,7 @@ with (
         print("JSON does not contain a list")
 
     for list_item in json_object:
-        review_to_insert = models.Review(
+        review_to_insert = Review(
             id=list_item['id'],
             accommodation_id=list_item['parents'][0]['id'],
             user_id=list_item['user']['id'],
@@ -57,7 +58,7 @@ with (
         )
   
         try:
-            repository.create_review(session=session, review=review_to_insert)
+            review_repository.create_review(session=session, review=review_to_insert)
         except IntegrityError as err:
             if isinstance(err.orig, ForeignKeyViolation):
                 print("No accommodation found for id: {id}".format(id=review_to_insert.accommodation_id))

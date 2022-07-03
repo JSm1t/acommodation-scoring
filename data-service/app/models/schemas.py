@@ -1,6 +1,8 @@
+from typing import Generic, TypeVar
 from datetime import datetime
 from uuid import UUID
 from pydantic import BaseModel
+from pydantic.generics import GenericModel
 from datetime import datetime
 
 class Review(BaseModel):
@@ -62,3 +64,16 @@ class Accommodation(BaseModel):
 
     class Config:
         orm_mode = True
+
+DataT = TypeVar('DataT')
+
+class PaginationResponse(BaseModel):
+    limit: int
+    skip: int
+
+class MetaResponse(BaseModel):
+    pagination: PaginationResponse
+
+class PaginatedResponse(GenericModel, Generic[DataT]):
+    data: list[DataT]
+    meta: MetaResponse
