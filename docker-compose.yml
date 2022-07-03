@@ -6,5 +6,6 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: mysecret
+      POSTGRES_DB: accommodation-scoring
     ports:
       - '5432:5432'
