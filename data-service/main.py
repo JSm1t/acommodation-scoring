@@ -1,7 +1,6 @@
 from typing import TypeVar
 from sqlalchemy.orm import Session
 from fastapi import FastAPI, Depends, HTTPException
-from pydantic import BaseModel
 
 from app.infrastructure.repositories import accommodation_repository, review_repository
 from app.models.schemas import PaginatedResponse, Accommodation, Review
