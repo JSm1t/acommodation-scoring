@@ -72,6 +72,7 @@ Scoring-service
 
 ## TODOs / Wishlist
 Due to time constraints certain aspects of the project couldn't be fully finished. The following was on the wishlist to make the application more production ready and easier to work with:
+ - Fetch all reviews instead of just a single large page
  - Complete docker-compose.yml file, including a data-service and scoring service. This allows starting the whole project with just a simple `docker-compose up`.
  - Set up a more complete testing suite for the data-service and scoring-service. Integration tests and e2e tests are missing.
  - Add better logging to both services, to allow for better monitoring.
