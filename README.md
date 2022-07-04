@@ -44,17 +44,29 @@ Starting the data-service can be done in the `data-service` directory via the fo
 ```sh
 uvicorn main:app
 ```
+Using the .env.example as env file will let the data-service run locally at port 8000.
 
 The scoring-service is written in typescript, and therefore needs to be build first before it can run:
 ```sh
 npm run build && npm run start
 ```
+Using the .env.example as env file will let the scoring-service run locally at port 6000.
 
 To run the tests for the scoring service, run (this requires a `npm run build` before running the tests):
 ```sh
 npm run test
 ```
 
+## Routes
+
+Data-service
+ - /accommodations
+ - /accommodations/{accommodation_id}
+ - /accommodations/{accommodation_id}/reviews
+ - /accommodations/{accommodation_id}/reviews/{review_id}
+
+Scoring-service
+ - /accommodations/{accommodation_id}/scores
 
 
 
