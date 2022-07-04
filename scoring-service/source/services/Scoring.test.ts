@@ -9,25 +9,25 @@ describe('Scoring service', () => {
         // Weighted: 28.969882423813804
         {
           rating: 9,
-          reviewDate: DateTime.now().toJSDate(),
+          reviewDate: DateTime.now().toISO(),
         },
         // Weight: 3.091042453358316
         // Weighted: 18.546254720149896
         {
           rating: 6,
-          reviewDate: DateTime.now().minus({ months: 3 }).toJSDate(),
+          reviewDate: DateTime.now().minus({ months: 3 }).toISO(),
         },
         // Weight: 2.70805020110221
         // Weighted: 21.66440160881768
         {
           rating: 8,
-          reviewDate: DateTime.now().minus({ months: 10 }).toJSDate(),
+          reviewDate: DateTime.now().minus({ months: 10 }).toISO(),
         },
         // Weight: 0.5709795465857378
         // Weighted: 3.4258772795144266
         {
           rating: 6,
-          reviewDate: DateTime.now().minus({ months: 24 }).toJSDate(),
+          reviewDate: DateTime.now().minus({ months: 24 }).toISO(),
         },
       ];
 
@@ -45,21 +45,21 @@ describe('Scoring service', () => {
         // Weighted: 26.961590461985917
         {
           rating: 9,
-          reviewDate: DateTime.now().minus({ months: 5 }).toJSDate(),
+          reviewDate: DateTime.now().minus({ months: 5 }).toISO(),
         },
         {
           rating: null,
-          reviewDate: DateTime.now().minus({ months: 25 }).toJSDate(),
+          reviewDate: DateTime.now().minus({ months: 25 }).toISO(),
         },
         {
           // Weight: 2.995732273553991
           // Weighted: 23.965858188431927
           rating: 8,
-          reviewDate: DateTime.now().minus({ months: 5 }).toJSDate(),
+          reviewDate: DateTime.now().minus({ months: 5 }).toISO(),
         },
         {
           rating: null,
-          reviewDate: DateTime.now().minus({ months: 3 }).toJSDate(),
+          reviewDate: DateTime.now().minus({ months: 3 }).toISO(),
         },
       ];
 
@@ -75,19 +75,19 @@ describe('Scoring service', () => {
       const ratings = [
         {
           rating: null,
-          reviewDate: DateTime.now().minus({ months: 5 }).toJSDate(),
+          reviewDate: DateTime.now().minus({ months: 5 }).toISO(),
         },
         {
           rating: null,
-          reviewDate: DateTime.now().minus({ months: 25 }).toJSDate(),
+          reviewDate: DateTime.now().minus({ months: 25 }).toISO(),
         },
         {
           rating: null,
-          reviewDate: DateTime.now().minus({ months: 5 }).toJSDate(),
+          reviewDate: DateTime.now().minus({ months: 5 }).toISO(),
         },
         {
           rating: null,
-          reviewDate: DateTime.now().minus({ months: 3 }).toJSDate(),
+          reviewDate: DateTime.now().minus({ months: 3 }).toISO(),
         },
       ];
 
